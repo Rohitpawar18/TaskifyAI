@@ -5,10 +5,11 @@
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>com.smarttask</groupId>
-    <artifactId>smarttask-ai</artifactId>
+    <groupId>com.taskify</groupId>
+    <artifactId>taskify-ai</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
+    <name>TaskifyAI</name>
     
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -46,23 +47,31 @@
             <version>2.0.0</version>
         </dependency>
         
-        <!-- MySQL Connector (for local development) -->
+        <!-- MySQL Connector (local dev) -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
         
-        <!-- PostgreSQL for Heroku -->
+        <!-- PostgreSQL (Render) -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.6.0</version>
         </dependency>
+        
+        <!-- WebApp Runner for Tomcat -->
+        <dependency>
+            <groupId>com.heroku</groupId>
+            <artifactId>webapp-runner</artifactId>
+            <version>9.0.52.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     
     <build>
-        <finalName>smarttaskai</finalName>
+        <finalName>taskifyai</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -71,10 +80,23 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
+                    <compilerArgs>
+                        <arg>-Xmx512m</arg>
+                    </compilerArgs>
+                    <fork>true</fork>
                 </configuration>
             </plugin>
             
-            <!-- Heroku webapp runner plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            
+            <!-- Copy webapp-runner -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>

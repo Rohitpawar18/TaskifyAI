@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Register - SmartTask AI</title>
+    <title>Register - TaskifyAI</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -29,7 +29,7 @@
             font-family: 'Roboto', Arial, sans-serif;
             min-height: 100vh;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             padding: 20px;
         }
@@ -297,12 +297,10 @@
     <div class="container">
         <div class="logo">
             <i class="fas fa-robot"></i>
-            SmartTask AI
+            TaskifyAI
         </div>
         
-        <div class="tagline">
-            Join thousands of users managing tasks smarter with AI
-        </div>
+        
         
         <h2>Create Your Account</h2>
         

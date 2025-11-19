@@ -6,25 +6,25 @@ import java.net.URISyntaxException;
 public class DBUtil {
     public static Connection getConnection() throws Exception {
         try {
-            // Check for Heroku PostgreSQL database URL first
+            // Check for Render PostgreSQL database URL
             String databaseUrl = System.getenv("DATABASE_URL");
             
-            if (databaseUrl != null) {
-                System.out.println("Using Heroku PostgreSQL database");
-                return getHerokuPostgreSQLConnection(databaseUrl);
+            if (databaseUrl != null && databaseUrl.startsWith("postgres")) {
+                System.out.println("🔗 Using PostgreSQL database from Render");
+                return getPostgreSQLConnection(databaseUrl);
             } else {
                 // Fallback to MySQL for local development
-                System.out.println("Using MySQL database for local development");
+                System.out.println("🔗 Using MySQL database for local development");
                 return getMySQLConnection();
             }
         } catch (Exception e) {
-            System.err.println("Database connection error: " + e.getMessage());
+            System.err.println("❌ Database connection error: " + e.getMessage());
             e.printStackTrace();
             throw e;
         }
     }
     
-    private static Connection getHerokuPostgreSQLConnection(String databaseUrl) throws Exception {
+    private static Connection getPostgreSQLConnection(String databaseUrl) throws Exception {
         try {
             URI dbUri = new URI(databaseUrl);
             
@@ -33,14 +33,14 @@ public class DBUtil {
             String port = String.valueOf(dbUri.getPort());
             String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ":" + port + dbUri.getPath();
             
-            // Add SSL requirement for Heroku
+            // Add SSL for Render
             if (dbUrl.contains("?")) {
                 dbUrl += "&sslmode=require";
             } else {
                 dbUrl += "?sslmode=require";
             }
             
-            System.out.println("Connecting to Heroku PostgreSQL...");
+            System.out.println("📊 Connecting to PostgreSQL database...");
             
             Class.forName("org.postgresql.Driver");
             return DriverManager.getConnection(dbUrl, username, password);
@@ -50,18 +50,18 @@ public class DBUtil {
     }
     
     private static Connection getMySQLConnection() throws Exception {
-        String url = "jdbc:mysql://localhost:3306/smarttdb";
+        String url = "jdbc:mysql://localhost:3306/taskifydb";
         String user = "root";
         String password = "dbms";
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection(url, user, password);
     }
     
-    // Test method to verify connection
+    // Test connection
     public static void testConnection() {
         try (Connection conn = getConnection()) {
             System.out.println("✅ Database connected successfully!");
-            System.out.println("Database: " + conn.getMetaData().getDatabaseProductName());
+            System.out.println("📊 Database: " + conn.getMetaData().getDatabaseProductName());
         } catch (Exception e) {
             System.err.println("❌ Database connection failed: " + e.getMessage());
         }

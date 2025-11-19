@@ -8,7 +8,7 @@
 <%@ page import="java.util.*" %>
 <html lang="en">
 <head>
-    <title>All Tasks - SmartTask AI</title>
+    <title>All Tasks - TaskifyAI</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -54,7 +54,7 @@
         }
         
         h2 { 
-            color: var(--primary); 
+            color: white; 
             text-align: center;
             margin: 20px 0 30px 0;
             font-size: 2rem;
@@ -325,7 +325,7 @@
         <div class="header">
             <div class="header-left">
                 <i class="fas fa-robot"></i>
-                SmartTask AI
+                TaskifyAI
             </div>
             <div class="header-center">
                 <a href="index.jsp" class="header-tab">

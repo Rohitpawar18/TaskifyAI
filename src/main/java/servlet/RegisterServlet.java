@@ -15,9 +15,9 @@ public class RegisterServlet extends HttpServlet {
             boolean success = dao.registerUser(username, password);
             if (success) {
                 String tableName = "tasks_" + username.replaceAll("\\W+", ""); // sanitize username
-             // In RegisterServlet.java - find the table creation part and replace with:
+             // In RegisterServlet.java - update table creation
                 String sql = "CREATE TABLE " + tableName + " (" +
-                    "task_id SERIAL PRIMARY KEY," +  // SERIAL for PostgreSQL auto-increment
+                    "task_id SERIAL PRIMARY KEY," +  // SERIAL for PostgreSQL
                     "description VARCHAR(255) NOT NULL," +
                     "status VARCHAR(20) DEFAULT 'Pending'," +
                     "priority VARCHAR(10) DEFAULT 'Medium'," +

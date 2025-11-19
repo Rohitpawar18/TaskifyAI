@@ -9,7 +9,7 @@
 <%@ page import="java.util.*" %>
 <html lang="en">
 <head>
-    <title>SmartTask AI: Create Task</title>
+    <title>TaskifyAI: Create Task</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -309,7 +309,7 @@
     <div class="header">
         <div class="header-left">
             <i class="fas fa-robot"></i>
-            SmartTask AI
+            TaskifyAI
         </div>
         <div class="header-center">
             <a href="index.jsp" class="header-tab active">
@@ -329,7 +329,7 @@
     <div class="container">
         <div class="logo">
             <i class="fas fa-robot"></i>
-            SmartTask AI
+            TaskifyAI
         </div>
         <div class="info">
             <span>Create a new task using natural language or the form below.</span><br>
