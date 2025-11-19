@@ -1,11 +1,10 @@
 services:
   - type: web
     name: taskify-ai
-    env: java
+    env: docker
     plan: free
-    buildCommand: mvn clean package
-    startCommand: java -jar target/dependency/webapp-runner.jar target/taskifyai.war --port $PORT
+    dockerfilePath: Dockerfile
     envVars:
-      - key: JAVA_VERSION
-        value: 11
+      - key: JAVA_OPTS
+        value: -Xmx256m -Xss512k -Dfile.encoding=UTF-8
     autoDeploy: true
