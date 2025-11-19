@@ -4,6 +4,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import java.io.*;
 
+
 public class LoginServlet extends HttpServlet {
     private UserDAO dao = new UserDAO();
 
