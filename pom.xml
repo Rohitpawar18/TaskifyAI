@@ -62,12 +62,12 @@
             <version>42.6.0</version>
         </dependency>
         
-        <!-- WebApp Runner -->
+        <!-- WebApp Runner - REMOVE provided scope -->
         <dependency>
             <groupId>com.heroku</groupId>
             <artifactId>webapp-runner</artifactId>
             <version>9.0.52.0</version>
-            <scope>provided</scope>
+            <!-- REMOVED scope: provided -->
         </dependency>
     </dependencies>
     
